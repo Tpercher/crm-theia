@@ -1,14 +1,25 @@
 # Feuille de route
 
-Une PR par étape. L'ordre suit les priorités du cahier des charges : cohérence des données, puis CRM central, Data Lab, permissions, Inbound / Outbound, paramètres, workflows, tracking, enrichissement et IA.
+Version détaillée et questions ouvertes : https://claude.ai/artifact/WxAsq4y4xK4v8Xsta926V4
 
-1. **Socle** (cette version) : organisations, comptes, rôles, RLS, contacts, entreprises, historique, audit.
-2. **Équipe et accès** : invitations (lien d'invitation, puis email une fois l'emailing en place), changement de rôle, désactivation, rôles personnalisés, équipes.
-3. **CRM complet** : leads, opportunités et pipelines, activités, tâches, campagnes, associations, propriétés personnalisées, vues enregistrées et filtres, import / export CSV, fusion de doublons.
-4. **Data Lab** : tables façon Clay, colonnes formule / fonction / référence, provenance par cellule, exécutions journalisées, transfert explicite vers le CRM.
-5. **Enrichissement** : connexions par organisation (clés chiffrées), file de tâches, crédits et journal par exécution. Adaptateurs :
-   - FullEnrich : à écrire d'après sa documentation d'API officielle ;
-   - Pipecorn : documentation à obtenir ;
-   - scraper Google / Google Maps interne : contrat d'API à définir avec Théo. Le respect des conditions d'utilisation de Google relève de l'exploitant.
-6. **Emailing interne** : service d'envoi, domaines d'envoi (SPF, DKIM, DMARC), désinscription, suivi des rebonds, liens avec le consentement des contacts.
-7. **Inbound / Outbound, workflows, tracking, IA.**
+Le découpage suit le plan fonctionnel de Théo du 14/11/2026. Chaque lot correspond à une ou plusieurs PR, livrées avec leurs tests. Les lots 1 à 3 forment le cœur ; l'ordre des lots 4 à 10 dépendra de la priorité commerciale.
+
+0. **Socle** (fait) : organisations isolées (RLS), comptes, rôles, contacts, entreprises, historique, audit.
+1. **Objets et propriétés** :
+   - tous les objets : contacts, leads, entreprises, tâches, tickets, appels, réunions, transactions, campagnes, partenaires ;
+   - propriétés personnalisées typées, avec des règles (chiffrée, sensible, format) ;
+   - associations avec libellés, associations hiérarchiques ;
+   - import et export.
+2. **Équipe, crédits, connexions** : invitations, rôles personnalisés, équipes, portefeuille de crédits (réservation puis débit, plafonds, journal), coffre de secrets chiffré par organisation.
+3. **Moteur de filtres, vues, segments** :
+   - vues tableau et pipeline, segments ;
+   - opérateurs classiques, logiques, inter-propriétés, sur l'historique, de qualité et fuzzy, et sur le graphe d'associations.
+4. **Ventes** : pipelines et automatisation de pipe, objectifs, partenaires, planificateur de réunions, guide conversationnel.
+5. **Tables Inbound / Outbound** : tables façon Clay, cascade d'enrichissement (FullEnrich, Pipecorn, scraper Google / Maps interne), nettoyage, détection de changement de poste.
+6. **Canevas d'automatisation** :
+   - déclencheurs, cron, HTTP, connecteurs, if / switch / boucles, IA ;
+   - code JS, Python et SQL en bac à sable isolé.
+7. **Marketing et Growth** : campagnes UTM, formulaires, CTA, pages, chatflows, scoring, A/B, modèles de message, emailing interne (service séparé).
+8. **Data, tracking, RGPD** : code et URL de suivi, intégrations pubs / GTM, intention d'achat, consentement, cookies, purge.
+9. **Reporting** : KPI, rapports personnalisés, entonnoirs, attribution, parcours, reporting financier.
+10. **IA avancée** : opérateurs prédictifs, agents, Agent Hub.
